@@ -39,7 +39,7 @@ spec:
 
         volumeMounts:
         - name: db-storage
-          mountPath: /var/lib/raja
+          mountPath: /usr/share/nginx/html
 
   volumeClaimTemplates:
   - metadata:
