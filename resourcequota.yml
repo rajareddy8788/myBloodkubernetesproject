@@ -3,10 +3,10 @@ kind: ResourceQuota
 metadata:
   name: myapp-resourcequota
   namespace: production
-  spec:
-    hard:
-      requests.cpu: "500m"
-      requests.memory: "256Mi"
-      limits.cpu: "1"
-      limits.memory: "512Mi"
+spec:
+  hard:
+    requests.cpu: "500m"
+    requests.memory: "256Mi"
+    limits.cpu: "1"
+    limits.memory: "512Mi"
   
