@@ -19,28 +19,34 @@ spec:
 
     spec:
       containers:
-        - name: dbapp
-          image: shaikmustafa/phpapp:dbimage
+      - name: dbapp
+        image: shaikmustafa/phpapp:dbimage
 
-          ports:
-            - containerPort: 3306
+        ports:
+        - containerPort: 3306
 
-          envFrom:
-            - secretRef:
-                name: myapp-secret
-
-          volumeMounts:
-            - name: db-storage
-              mountPath: /usr/share/nginx/html
-
-  volumeClaimTemplates:
-    - metadata:
-        name: db-storage
-
-      spec:
-        accessModes:
-          - ReadWriteOnce
+        envFrom:
+        - secretRef:
+            name: myapp-secret
 
         resources:
           requests:
-            storage: 1Gi
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+
+        volumeMounts:
+        - name: db-storage
+          mountPath: /var/lib/raja
+
+  volumeClaimTemplates:
+  - metadata:
+      name: db-storage
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
