@@ -45,6 +45,7 @@ spec:
   - metadata:
       name: db-storage
     spec:
+      storageClassName: gp2
       accessModes:
       - ReadWriteOnce
       resources:
